@@ -29,4 +29,12 @@ const deleteUser = async (id: string): Promise<string[]> => {
   return knexDb('users').where({ id }).delete()
 }
 
-export default { getUser, createUser, updateUser, deleteUser }
+const getUserByEmail = async (email: string): Promise<UserType> => {
+  return knexDb('users')
+    .where({
+      email
+    })
+    .first()
+}
+
+export default { getUser, createUser, updateUser, deleteUser, getUserByEmail }
